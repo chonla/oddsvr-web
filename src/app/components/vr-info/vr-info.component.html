@@ -1,0 +1,6 @@
+<div *ngIf="run">
+  <h2>{{ run.name }}</h2>
+
+  <button *ngIf="isLogin && !run.joined" mat-raised-button color="primary" (click)="joinVr()"><fa-icon [icon]="faSignInAlt"></fa-icon> เข้าร่วม Virtual Run นี้</button>
+  <a *ngIf="!isLogin" [href]="signInUrl" mat-raised-button color="primary"><fa-icon [icon]="faSignInAlt"></fa-icon> เข้าร่วม Virtual Run นี้ด้วย account Strava ของฉัน</a>
+</div>

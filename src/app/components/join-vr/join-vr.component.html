@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>เข้าร่วม Virtual Run</h1>
+<form [formGroup]="vrForm">
+  <div mat-dialog-content class="vr-form">
+    <mat-form-field>
+      <input matInput type="number" formControlName="distance" placeholder="ระยะทางที่ฉันจะวิ่ง">
+      <span matSuffix>&nbsp; ก.ม.</span>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">ยกเลิก</button>
+    <button mat-button mat-raised-button color="primary" (click)="submit()" cdkFocusInitial>ตกลง</button>
+  </div>
+</form>

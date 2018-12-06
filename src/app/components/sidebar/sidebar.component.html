@@ -1,0 +1,50 @@
+<mat-card *ngIf="me">
+  <mat-card-header>
+    <img mat-card-avatar [src]="me.profile">
+    <mat-card-title>{{ me.firstname }} {{ me.lastname }}</mat-card-title>
+    <mat-card-subtitle>{{ me.username }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="divider"></div>
+    <mat-grid-list cols="5" rowHeight="60px">
+      <mat-grid-tile><a mat-button color="primary" [routerLink]="['/vr']" title="หน้าหลัก"><fa-icon [icon]="faHome" class="fa-2x"></fa-icon></a></mat-grid-tile>
+      <mat-grid-tile><a mat-button color="primary" href="https://www.strava.com" target="_blank"><fa-icon [icon]="faStrava" class="fa-2x" title="ไป Strava"></fa-icon></a></mat-grid-tile>
+      <mat-grid-tile [colspan]="3"></mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="1" rowHeight="32px">
+      <mat-grid-tile class="stats-title">ล่าสุด</mat-grid-tile>
+      <mat-grid-tile><span class="stats-label">{{ me.stats.recent.title }}</span>: {{ me.stats.recent.start_date | friendlyDate }}</mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="5" rowHeight="32px">
+      <mat-grid-tile [colspan]="5" class="stats-title">ทั้งหมด</mat-grid-tile>
+      <mat-grid-tile [colspan]="3"><span class="stats-label">จำนวนครั้งที่วิ่ง</span></mat-grid-tile>
+      <mat-grid-tile>{{ me.stats.all_run_totals.count }}</mat-grid-tile>
+      <mat-grid-tile>ครั้ง</mat-grid-tile>
+      <mat-grid-tile [colspan]="3"><span class="stats-label">ระยะทางที่วิ่งได้</span></mat-grid-tile>
+      <mat-grid-tile>{{ me.stats.all_run_totals.distance / 1000 | number:"1.2-2" }}</mat-grid-tile>
+      <mat-grid-tile>km</mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="5" rowHeight="32px">
+      <mat-grid-tile [colspan]="5" class="stats-title">เดือนนี้</mat-grid-tile>
+      <mat-grid-tile [colspan]="3"><span class="stats-label">จำนวนครั้งที่วิ่ง</span></mat-grid-tile>
+      <mat-grid-tile>{{ me.stats.this_month_run_totals.count }}</mat-grid-tile>
+      <mat-grid-tile>ครั้ง</mat-grid-tile>
+      <mat-grid-tile [colspan]="3"><span class="stats-label">ระยะทางที่วิ่งได้</span></mat-grid-tile>
+      <mat-grid-tile>{{ me.stats.this_month_run_totals.distance / 1000 | number:"1.2-2" }}</mat-grid-tile>
+      <mat-grid-tile>km</mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="5" rowHeight="32px">
+      <mat-grid-tile [colspan]="5" class="stats-title">ใน 4 สัปดาห์ที่ผ่านมา</mat-grid-tile>
+      <mat-grid-tile [colspan]="3"><span class="stats-label">จำนวนครั้งที่วิ่ง</span></mat-grid-tile>
+      <mat-grid-tile>{{ me.stats.recent_run_totals.count }}</mat-grid-tile>
+      <mat-grid-tile>ครั้ง</mat-grid-tile>
+      <mat-grid-tile [colspan]="3"><span class="stats-label">ระยะทางที่วิ่งได้</span></mat-grid-tile>
+      <mat-grid-tile>{{ me.stats.recent_run_totals.distance / 1000 | number:"1.2-2" }}</mat-grid-tile>
+      <mat-grid-tile>km</mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="divider"></div>
+    <a mat-raised-button color="warn" [routerLink]="['/signout']"><fa-icon [icon]="faSignOutAlt"></fa-icon> ออกจากระบบ</a>
+  </mat-card-actions>
+</mat-card>

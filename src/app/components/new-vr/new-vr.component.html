@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>สร้าง Virtual Run</h1>
+<form [formGroup]="vrForm">
+  <div mat-dialog-content class="vr-form">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="ชื่อ Virtual Run">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="from_date" [matDatepicker]="fromPicker" placeholder="วันแรก">
+      <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+      <mat-datepicker #fromPicker touchUi></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="to_date" [matDatepicker]="toPicker" placeholder="วันสุดท้าย">
+      <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+      <mat-datepicker #toPicker touchUi></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" formControlName="distance" placeholder="ระยะทางที่ฉันจะวิ่ง">
+      <span matSuffix>&nbsp; ก.ม.</span>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">ยกเลิก</button>
+    <button mat-button mat-raised-button color="primary" (click)="submit()" cdkFocusInitial>ตกลง</button>
+  </div>
+</form>
